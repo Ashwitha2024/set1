@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Maximum Element</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      input[type="text"] {
+        width: 300px;
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      button {
+        padding: 10px 15px;
+      }
+      .result {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Find Maximum Element</h1>
+    <input
+      type="text"
+      id="arrayInput"
+      placeholder="Enter integers separated by commas"
+    />
+    <button onclick="findMaximum()">Find Maximum</button>
+    <div class="result" id="result"></div>
+
+    <script>
+      function findMaximum() {
+        const input = document.getElementById("arrayInput").value;
+        // Here the input string is converted to an array of numbers
+        const arr = input.split(",").map(Number); 
+
+        if (arr.length === 0 || arr.some(isNaN)) {
+          document.getElementById("result").textContent =
+            "Please enter valid integers.";
+          return;
+        }
+// Start with the first element with the index 0
+        let maxElement = arr[0]; 
+        for (const num of arr) {
+          if (num > maxElement) {
+            maxElement = num; // If num is Large Update maxElement
+          }
+        }
+
+        document.getElementById(
+          "result"
+        ).textContent = `The maximum element is: ${maxElement}`;
+      }
+    </script>
+  </body>
+</html>
